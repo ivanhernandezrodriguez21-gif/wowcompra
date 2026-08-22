@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoWcompra.es - Las mejores ofertas y recomendaciones</title>
+    <title>WoWcompra.es - Las mejores ofertas en tecnología</title>
     <style>
         :root {
             --primary: #ff9900;
@@ -13,158 +11,26 @@
             --btn-yellow: #ffd814;
             --btn-hover: #f7ca00;
             --bg-gray: #f3f3f3;
-            --text-dark: #0f1111;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-gray);
-            color: var(--text-dark);
-            line-height: 1.5;
-        }
-
-        header {
-            background-color: var(--dark);
-            color: white;
-            padding: 1.2rem;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-            letter-spacing: -0.5px;
-        }
-
-        header h1 span {
-            color: var(--primary);
-        }
-
-        .hero {
-            background: white;
-            padding: 2.5rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero p {
-            color: #565959;
-            font-size: 1rem;
-        }
-
-        .disclaimer {
-            background-color: #fff8e7;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 0.8rem;
-            text-align: center;
-            font-size: 0.85rem;
-            max-width: 1100px;
-            margin: 1rem auto;
-            border-radius: 6px;
-        }
-
-        .grid-container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .product-card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 180px;
-            background-color: #f9f9f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            color: #888;
-            font-size: 0.9rem;
-            border: 1px dashed #ccc;
-        }
-
-        .badge {
-            background-color: #cc0c39;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            align-self: flex-start;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .product-title {
-            font-size: 1.05rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .product-description {
-            font-size: 0.85rem;
-            color: #565959;
-            margin-bottom: 1.2rem;
-        }
-
-        .btn-buy {
-            display: block;
-            background-color: var(--btn-yellow);
-            color: var(--text-dark);
-            text-decoration: none;
-            text-align: center;
-            padding: 0.7rem;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            border: 1px solid #fcd200;
-            transition: background-color 0.2s;
-        }
-
-        .btn-buy:hover {
-            background-color: var(--btn-hover);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: #ccc;
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.85rem;
-            margin-top: 3rem;
-            line-height: 1.6;
-        }
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background-color: var(--bg-gray); color: #333; }
+        header { background-color: var(--dark); color: white; text-align: center; padding: 1.5rem; }
+        header h1 { margin: 0; font-size: 1.8rem; }
+        header h1 span { color: var(--primary); }
+        .hero { text-align: center; padding: 1.5rem 1rem; background: white; border-bottom: 1px solid #ddd; }
+        .hero h2 { margin-top: 0; }
+        .disclaimer { background-color: #fff8e7; border: 1px solid #ffeeba; padding: 12px; margin: 15px auto; max-width: 900px; border-radius: 6px; font-size: 0.85rem; color: #856404; text-align: center; width: 90%; box-sizing: border-box; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+        .product-card { background: white; border-radius: 8px; border: 1px solid #e0e0e0; overflow: hidden; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .product-image { height: 200px; text-align: center; margin-bottom: 15px; }
+        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .badge { background-color: #cc0c39; color: white; font-size: 0.75rem; font-weight: bold; padding: 0.2rem 0.5rem; border-radius: 3px; align-self: flex-start; margin-bottom: 0.5rem; text-transform: uppercase; }
+        .product-title { font-size: 1.05rem; font-weight: bold; margin-bottom: 0.5rem; line-height: 1.3; margin-top: 5px; }
+        .product-description { font-size: 0.85rem; color: #565959; margin-bottom: 1rem; }
+        .price-container { margin-bottom: 1rem; }
+        .old-price { text-decoration: line-through; color: #767676; font-size: 0.9rem; margin-right: 8px; }
+        .new-price { font-size: 1.3rem; font-weight: bold; color: #B12704; }
+        .btn-buy { background-color: var(--btn-yellow); color: #111; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block; border: 1px solid #FCD200; box-shadow: 0 2px 5px rgba(213,217,217,.5); }
+        .btn-buy:hover { background-color: var(--btn-hover); }
     </style>
 </head>
 <body>
@@ -179,41 +45,33 @@
     </div>
 
     <div class="disclaimer">
-        <strong>Aviso de afiliación:</strong> En WoWcompra.es participamos en programas de afiliados (como Amazon, Temu o AliExpress). Cuando compras a través de nuestros enlaces, podemos recibir una comisión sin que a ti te cueste un solo céntimo más.
+        <strong>Aviso de afiliación:</strong> En WoWcompra.es participamos en programas de afiliados. Cuando compras a través de nuestros enlaces, podemos recibir una comisión sin que a ti te cueste un solo céntimo más.
     </div>
 
     <main class="grid-container">
-
-        <!-- Producto 1 -->
-        Oferta Flash a 23,73 € (Antes 109,99 €). 75h de batería, pantalla LED e impermeables.
-
-        <!-- Producto 2 -->
+        
+        <!-- Producto 1: HAOYUAN Auriculares -->
         <article class="product-card">
             <div>
-                <div class="product-image">Espacio para Imagen del Producto</div>
-                <span class="badge">Oferta Destacada</span>
-                <h3 class="product-title">Reloj Inteligente Deportivo con GPS</h3>
-                <p class="product-description">Monitorización de ritmo cardíaco, más de 20 modos deportivos y resistencia al agua 5 ATM.</p>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71-xS7p9GcL._AC_SL1500_.jpg" alt="Auriculares HAOYUAN Bluetooth 5.4">
+                </div>
+                <span class="badge">Top Ventas</span>
+                <h3 class="product-title">Auriculares Inalámbricos HAOYUAN Bluetooth 5.4</h3>
+                <p class="product-description">75h de batería, pantalla LED de carga, cancelación de ruido e impermeables IPX7.</p>
             </div>
-            <a href="https://www.amazon.es" target="_blank" rel="nofollow noopener" class="btn-buy">Ver oferta en la tienda</a>
-        </article>
-
-        <!-- Producto 3 -->
-        <article class="product-card">
             <div>
-                <div class="product-image">Espacio para Imagen del Producto</div>
-                <h3 class="product-title">Soporte Ajustable de Aluminio para Portátil</h3>
-                <p class="product-description">Diseño ergonómico y plegable compatible con portátiles de 10 a 15.6 pulgadas.</p>
+                <div class="price-container">
+                    <span class="old-price">109,99 €</span>
+                    <span class="new-price">23,73 €</span>
+                </div>
+                <a href="https://www.amazon.es/dp/B0D93MQ4N3?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                    Ver Oferta en Amazon
+                </a>
             </div>
-            <a href="https://www.amazon.es" target="_blank" rel="nofollow noopener" class="btn-buy">Ver oferta en la tienda</a>
         </article>
 
     </main>
-
-    <footer>
-        <p>&copy; 2026 WoWcompra.es - Todos los derechos reservados.</p>
-        <p>Amazon y el logotipo de Amazon son marcas comerciales de Amazon.com, Inc. o sus filiales.</p>
-    </footer>
 
 </body>
 </html>
