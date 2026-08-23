@@ -402,11 +402,12 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 3: COCHE -->
+        <!-- SECCIÓN 3: COCHE COMPLETA CON TUS ENLACES -->
         <section id="coche" class="category-group">
             <h2 class="section-title">🚗 Coche y Accesorios</h2>
             <div class="product-grid">
 
+                <!-- 1. CARGADOR INALÁMBRICO -->
                 <article class="product-card">
                     <div>
                         <div class="product-image">
@@ -427,6 +428,69 @@
                     </div>
                 </article>
 
+                <!-- 2. ARRANCADOR DE BATERÍAS -->
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="arrancador.jpg" alt="Arrancador de Baterías de Coche">
+                        </div>
+                        <span class="badge">Imprescindible</span>
+                        <h3 class="product-title">Arrancador de Baterías de Coche Portátil</h3>
+                        <p class="product-description">Arranca motores de gasolina y diésel en segundos. Incluye linterna LED de emergencia y función Power Bank.</p>
+                    </div>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">79,99 €</span>
+                            <span class="new-price">42,99 €</span>
+                        </div>
+                        <a href="Https://amzn.eu/d/0cUPBRk9?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 3. PANTALLA CARPLAY -->
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="carplay.jpg" alt="Pantalla Carplay y Android Auto Portátil">
+                        </div>
+                        <span class="badge">Top Ventas</span>
+                        <h3 class="product-title">Pantalla Táctil 7" Wireless CarPlay & Android Auto</h3>
+                        <p class="product-description">Moderniza tu coche al instante sin instalación. GPS, llamadas, Spotify y espejo de pantalla integrado.</p>
+                    </div>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">99,99 €</span>
+                            <span class="new-price">54,99 €</span>
+                        </div>
+                        <a href="Https://amzn.eu/d/0i0vRzvM?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 4. DASH CAM CÁMARA -->
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="dashcam.jpg" alt="Cámara de Coche Dash Cam Full HD">
+                        </div>
+                        <span class="badge">Chollo</span>
+                        <h3 class="product-title">Cámara de Coche Dash Cam Full HD 1080P</h3>
+                        <p class="product-description">Grabación en bucle, sensor G para detección de colisiones, visión nocturna y ángulo gran angular de 170°.</p>
+                    </div>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">49,99 €</span>
+                            <span class="new-price">29,99 €</span>
+                        </div>
+                        <a href="Https://amzn.eu/d/0dr1NdX2?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
+                    </div>
+                </article>
+
             </div>
         </section>
 
@@ -439,12 +503,10 @@
     <!-- SCRIPT DE FILTRADO DINÁMICO -->
     <script>
         function filterCategory(category) {
-            // Actualizar clase del botón activo
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Mostrar u ocultar grupos de productos
             const groups = document.querySelectorAll('.category-group');
             groups.forEach(group => {
                 if (category === 'todos' || group.id === category) {
