@@ -41,7 +41,7 @@
         .categories-nav {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             padding: 15px;
             background-color: #232f3e;
             position: sticky;
@@ -50,18 +50,19 @@
             flex-wrap: wrap;
         }
 
-        .nav-btn {
+        .filter-btn {
             background-color: #37475a;
             color: white;
-            padding: 8px 18px;
+            border: none;
+            padding: 10px 20px;
             border-radius: 20px;
-            text-decoration: none;
             font-weight: bold;
             font-size: 0.95rem;
+            cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        .nav-btn:hover {
+        .filter-btn:hover, .filter-btn.active {
             background-color: #ff9900;
             color: #131921;
         }
@@ -73,16 +74,21 @@
             padding: 0 15px;
         }
 
-        /* Títulos de sección */
+        .category-group {
+            margin-bottom: 30px;
+        }
+
+        /* Oculta secciones no seleccionadas */
+        .category-group.hidden {
+            display: none;
+        }
+
         .section-title {
             font-size: 1.6rem;
             color: #131921;
-            margin: 35px 0 15px 0;
+            margin: 20px 0 15px 0;
             padding-bottom: 8px;
             border-bottom: 3px solid #ff9900;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         /* Grid de productos */
@@ -187,7 +193,6 @@
             background-color: #f7ca00;
         }
 
-        /* Pie de página */
         footer {
             text-align: center;
             margin-top: 50px;
@@ -211,227 +216,245 @@
         <p>Los mejores precios seleccionados día a día</p>
     </header>
 
-    <!-- MENÚ DE NAVEGACIÓN -->
+    <!-- MENÚ DE FILTROS POR BOTÓN -->
     <nav class="categories-nav">
-        <a href="#hogar" class="nav-btn">🏡 Hogar</a>
-        <a href="#tecnologia" class="nav-btn">🎧 Tecnología</a>
-        <a href="#coche" class="nav-btn">🚗 Coche</a>
+        <button class="filter-btn active" onclick="filterCategory('todos')">🔥 Todos</button>
+        <button class="filter-btn" onclick="filterCategory('hogar')">🏡 Hogar</button>
+        <button class="filter-btn" onclick="filterCategory('tecnologia')">🎧 Tecnología</button>
+        <button class="filter-btn" onclick="filterCategory('coche')">🚗 Coche</button>
     </nav>
 
     <main>
 
         <!-- SECCIÓN 1: HOGAR -->
-        <h2 id="hogar" class="section-title">🏡 Hogar y Estilo de Vida</h2>
-        <div class="product-grid">
-            
-            <!-- FREIDORA -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="Freidora.jpg" alt="Freidora de Aire Cecotec">
+        <section id="hogar" class="category-group">
+            <h2 class="section-title">🏡 Hogar y Estilo de Vida</h2>
+            <div class="product-grid">
+                
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="Freidora.jpg" alt="Freidora de Aire Cecotec">
+                        </div>
+                        <span class="badge">Oferta Flash</span>
+                        <h3 class="product-title">Freidora de Aire Cecotec Cecofry Fantastik 4L</h3>
+                        <p class="product-description">Ventana de visualización, 1400W de potencia, panel táctil y 9 modos automáticos.</p>
                     </div>
-                    <span class="badge">Oferta Flash</span>
-                    <h3 class="product-title">Freidora de Aire Cecotec Cecofry Fantastik 4L</h3>
-                    <p class="product-description">Ventana de visualización, 1400W de potencia, panel táctil y 9 modos automáticos.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">38,70 €</span>
-                        <span class="new-price">35,91 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">38,70 €</span>
+                            <span class="new-price">35,91 €</span>
+                        </div>
+                        <a href="https://amzn.to/ejemplo1?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="https://amzn.to/ejemplo1?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-            <!-- ASPIRADOR -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="aspirador.jpg" alt="Aspirador Inalámbrico">
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="aspirador.jpg" alt="Aspirador Inalámbrico">
+                        </div>
+                        <span class="badge">Chollo</span>
+                        <h3 class="product-title">Aspirador Inalámbrico Portátil Potente</h3>
+                        <p class="product-description">Diseño compacto y ligero, potente succión, filtro lavable y accesorios para coche y hogar.</p>
                     </div>
-                    <span class="badge">Chollo</span>
-                    <h3 class="product-title">Aspirador Inalámbrico Portátil Potente</h3>
-                    <p class="product-description">Diseño compacto y ligero, potente succión, filtro lavable y accesorios para coche y hogar.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">29,99 €</span>
-                        <span class="new-price">19,99 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">29,99 €</span>
+                            <span class="new-price">19,99 €</span>
+                        </div>
+                        <a href="https://amzn.to/ejemplo3?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="https://amzn.to/ejemplo3?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-            <!-- HUMIDIFICADOR -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="humidificador.jpg" alt="Humidificador Difusor de Aromas LED">
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="humidificador.jpg" alt="Humidificador Difusor de Aromas LED">
+                        </div>
+                        <span class="badge">Más Vendido</span>
+                        <h3 class="product-title">Humidificador Difusor de Aromas con Luz LED</h3>
+                        <p class="product-description">Diseño ultrasónico silencioso, 7 luces LED cambiantes, apagado automático y función de aromaterapia.</p>
                     </div>
-                    <span class="badge">Más Vendido</span>
-                    <h3 class="product-title">Humidificador Difusor de Aromas con Luz LED</h3>
-                    <p class="product-description">Diseño ultrasónico silencioso, 7 luces LED cambiantes, apagado automático y función de aromaterapia.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">25,99 €</span>
-                        <span class="new-price">15,99 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">25,99 €</span>
+                            <span class="new-price">15,99 €</span>
+                        </div>
+                        <a href="Https://amzn.eu/d/00qCbYQ2?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="Https://amzn.eu/d/00qCbYQ2?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-            <!-- BÁSCULA -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="bascula.jpg" alt="Báscula Grasa Corporal Inteligente">
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="bascula.jpg" alt="Báscula Grasa Corporal Inteligente">
+                        </div>
+                        <span class="badge">Top Ventas</span>
+                        <h3 class="product-title">Báscula Grasa Corporal Inteligente Bluetooth</h3>
+                        <p class="product-description">Análisis de 13 métricas corporales (IMC, masa muscular, agua), sincronización con App y pantalla LED.</p>
                     </div>
-                    <span class="badge">Top Ventas</span>
-                    <h3 class="product-title">Báscula Grasa Corporal Inteligente Bluetooth</h3>
-                    <p class="product-description">Análisis de 13 métricas corporales (IMC, masa muscular, agua), sincronización con App y pantalla LED.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">29,99 €</span>
-                        <span class="new-price">17,99 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">29,99 €</span>
+                            <span class="new-price">17,99 €</span>
+                        </div>
+                        <a href="Https://amzn.eu/d/01531CN8?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="Https://amzn.eu/d/01531CN8?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-        </div>
+            </div>
+        </section>
 
         <!-- SECCIÓN 2: TECNOLOGÍA -->
-        <h2 id="tecnologia" class="section-title">🎧 Tecnología y Gadgets</h2>
-        <div class="product-grid">
+        <section id="tecnologia" class="category-group">
+            <h2 class="section-title">🎧 Tecnología y Gadgets</h2>
+            <div class="product-grid">
 
-            <!-- AURICULARES -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="auriculares.jpg" alt="Auriculares HAOYUAN">
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="auriculares.jpg" alt="Auriculares HAOYUAN">
+                        </div>
+                        <span class="badge">Top Ventas</span>
+                        <h3 class="product-title">Auriculares Inalámbricos HAOYUAN Bluetooth 5.4</h3>
+                        <p class="product-description">75h de batería, pantalla LED de carga, cancelación de ruido e impermeables IPX7.</p>
                     </div>
-                    <span class="badge">Top Ventas</span>
-                    <h3 class="product-title">Auriculares Inalámbricos HAOYUAN Bluetooth 5.4</h3>
-                    <p class="product-description">75h de batería, pantalla LED de carga, cancelación de ruido e impermeables IPX7.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">109,99 €</span>
-                        <span class="new-price">23,73 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">109,99 €</span>
+                            <span class="new-price">23,73 €</span>
+                        </div>
+                        <a href="https://amzn.to/ejemplo6?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="https://amzn.to/ejemplo6?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-            <!-- TIRA LED -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="led.jpg" alt="Tira LED RGB Inteligente">
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="led.jpg" alt="Tira LED RGB Inteligente">
+                        </div>
+                        <span class="badge">Top Ventas</span>
+                        <h3 class="product-title">Tira LED RGB Inteligente con Mando y App</h3>
+                        <p class="product-description">Sincronización con música, control por app y mando, multitud de colores e instalación rápida.</p>
                     </div>
-                    <span class="badge">Top Ventas</span>
-                    <h3 class="product-title">Tira LED RGB Inteligente con Mando y App</h3>
-                    <p class="product-description">Sincronización con música, control por app y mando, multitud de colores e instalación rápida.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">18,99 €</span>
-                        <span class="new-price">11,99 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">18,99 €</span>
+                            <span class="new-price">11,99 €</span>
+                        </div>
+                        <a href="https://amzn.to/ejemplo5?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="https://amzn.to/ejemplo5?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-            <!-- PROYECTOR -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="proyector.jpg" alt="Mini Proyector Portátil">
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="proyector.jpg" alt="Mini Proyector Portátil">
+                        </div>
+                        <span class="badge">Novedad</span>
+                        <h3 class="product-title">Mini Proyector Portátil Full HD</h3>
+                        <p class="product-description">Cine en casa donde quieras. Conexión WiFi, Bluetooth, altavoces integrados y soporte para 1080P.</p>
                     </div>
-                    <span class="badge">Novedad</span>
-                    <h3 class="product-title">Mini Proyector Portátil Full HD</h3>
-                    <p class="product-description">Cine en casa donde quieras. Conexión WiFi, Bluetooth, altavoces integrados y soporte para 1080P.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">79,99 €</span>
-                        <span class="new-price">45,99 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">79,99 €</span>
+                            <span class="new-price">45,99 €</span>
+                        </div>
+                        <a href="https://amzn.to/ejemplo4?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="https://amzn.to/ejemplo4?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-            <!-- ALTAVOZ -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="altavoz.jpg" alt="Altavoz Bluetooth Portátil Impermeable">
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="altavoz.jpg" alt="Altavoz Bluetooth Portátil Impermeable">
+                        </div>
+                        <span class="badge">Top Ventas</span>
+                        <h3 class="product-title">Altavoz Bluetooth Portátil Impermeable IPX7</h3>
+                        <p class="product-description">Sonido HD potente, graves reforzados, hasta 12 horas de batería y resistente al agua.</p>
                     </div>
-                    <span class="badge">Top Ventas</span>
-                    <h3 class="product-title">Altavoz Bluetooth Portátil Impermeable IPX7</h3>
-                    <p class="product-description">Sonido HD potente, graves reforzados, hasta 12 horas de batería y resistente al agua.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">29,99 €</span>
-                        <span class="new-price">16,99 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">29,99 €</span>
+                            <span class="new-price">16,99 €</span>
+                        </div>
+                        <a href="Https://amzn.eu/d/03DsOa3r?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="Https://amzn.eu/d/03DsOa3r?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-        </div>
+            </div>
+        </section>
 
         <!-- SECCIÓN 3: COCHE -->
-        <h2 id="coche" class="section-title">🚗 Coche y Accesorios</h2>
-        <div class="product-grid">
+        <section id="coche" class="category-group">
+            <h2 class="section-title">🚗 Coche y Accesorios</h2>
+            <div class="product-grid">
 
-            <!-- CARGADOR DE COCHE -->
-            <article class="product-card">
-                <div>
-                    <div class="product-image">
-                        <img src="cargador.jpg" alt="Soporte Cargador Inalámbrico Coche">
+                <article class="product-card">
+                    <div>
+                        <div class="product-image">
+                            <img src="cargador.jpg" alt="Soporte Cargador Inalámbrico Coche">
+                        </div>
+                        <span class="badge">Tendencia</span>
+                        <h3 class="product-title">Soporte Cargador Inalámbrico Coche 15W</h3>
+                        <p class="product-description">Sujeción automática, carga rápida Qi, rotación 360° y compatible con todos los móviles.</p>
                     </div>
-                    <span class="badge">Tendencia</span>
-                    <h3 class="product-title">Soporte Cargador Inalámbrico Coche 15W</h3>
-                    <p class="product-description">Sujeción automática, carga rápida Qi, rotación 360° y compatible con todos los móviles.</p>
-                </div>
-                <div>
-                    <div class="price-container">
-                        <span class="old-price">24,99 €</span>
-                        <span class="new-price">14,99 €</span>
+                    <div>
+                        <div class="price-container">
+                            <span class="old-price">24,99 €</span>
+                            <span class="new-price">14,99 €</span>
+                        </div>
+                        <a href="Https://amzn.eu/d/0iyHLvCu?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                            Ver Oferta en Amazon
+                        </a>
                     </div>
-                    <a href="Https://amzn.eu/d/0iyHLvCu?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                        Ver Oferta en Amazon
-                    </a>
-                </div>
-            </article>
+                </article>
 
-        </div>
+            </div>
+        </section>
 
     </main>
 
     <footer>
         <p>En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</p>
     </footer>
+
+    <!-- SCRIPT DE FILTRADO DINÁMICO -->
+    <script>
+        function filterCategory(category) {
+            // Actualizar clase del botón activo
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Mostrar u ocultar grupos de productos
+            const groups = document.querySelectorAll('.category-group');
+            groups.forEach(group => {
+                if (category === 'todos' || group.id === category) {
+                    group.classList.remove('hidden');
+                } else {
+                    group.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
