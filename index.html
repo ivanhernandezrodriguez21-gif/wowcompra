@@ -3,256 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoWcompra.es - Las mejores ofertas en tecnología</title>
+    <title>Las Mejores Ofertas y Chollos de Amazon</title>
     <style>
-        :root {
-            --primary: #ff9900;
-            --dark: #131921;
-            --btn-yellow: #ffd814;
-            --btn-hover: #f7ca00;
-            --bg-gray: #f3f3f3;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background-color: var(--bg-gray); color: #333; }
-        header { background-color: var(--dark); color: white; text-align: center; padding: 1.5rem; }
-        header h1 { margin: 0; font-size: 1.8rem; }
-        header h1 span { color: var(--primary); }
-        .hero { text-align: center; padding: 1.5rem 1rem; background: white; border-bottom: 1px solid #ddd; }
-        .hero h2 { margin-top: 0; }
-        .disclaimer { background-color: #fff8e7; border: 1px solid #ffeeba; padding: 12px; margin: 15px auto; max-width: 900px; border-radius: 6px; font-size: 0.85rem; color: #856404; text-align: center; width: 90%; box-sizing: border-box; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 20px auto; padding: 0 15px; }
-        .product-card { background: white; border-radius: 8px; border: 1px solid #e0e0e0; overflow: hidden; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .product-image { height: 180px; text-align: center; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; overflow: hidden; }
-        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .badge { background-color: #cc0c39; color: white; font-size: 0.75rem; font-weight: bold; padding: 0.2rem 0.5rem; border-radius: 3px; align-self: flex-start; margin-bottom: 0.5rem; text-transform: uppercase; }
-        .product-title { font-size: 1.05rem; font-weight: bold; margin-bottom: 0.5rem; line-height: 1.3; margin-top: 5px; }
-        .product-description { font-size: 0.85rem; color: #565959; margin-bottom: 1rem; }
-        .price-container { margin-bottom: 1rem; }
-        .old-price { text-decoration: line-through; color: #767676; font-size: 0.9rem; margin-right: 8px; }
-        .new-price { font-size: 1.3rem; font-weight: bold; color: #B12704; }
-        .btn-buy { background-color: var(--btn-yellow); color: #111; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block; border: 1px solid #FCD200; box-shadow: 0 2px 5px rgba(213,217,217,.5); }
-        .btn-buy:hover { background-color: var(--btn-hover); }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        header {
+            background-color: #131921;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #febd69;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Menú de categorías */
+        .categories-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px;
+            background-color: #232f3e;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background-color: #37475a;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #ff9900;
+            color: #131921;
+        }
+
+        /* Contenedor principal */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* Títulos de sección */
+        .section-title {
+            font-size: 1.6rem;
+            color: #131921;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #ff9900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Grid de productos */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* Tarjeta de producto */
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #cc0c39;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #131921;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #565959;
+            margin-bottom: 15px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #565959;
+            font-size: 0.9rem;
+        }
+
+        .new-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #b12704;
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            background-color: #ffd814;
+            border: 1px solid #fcd200;
+            color: #0f1111;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-buy:hover {
+            background-color: #f7ca00;
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #131921;
+            color: #ddd;
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>WoW<span>compra</span>.es</h1>
+        <h1>🔥 Selección de Ofertas y Chollos</h1>
+        <p>Los mejores precios seleccionados día a día</p>
     </header>
 
-    <div class="hero">
-        <h2>Las mejores recomendaciones en tecnología y gadgets</h2>
-        <p>Analizamos y seleccionamos las mejores ofertas para ayudarte a elegir bien.</p>
-    </div>
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav class="categories-nav">
+        <a href="#hogar" class="nav-btn">🏡 Hogar</a>
+        <a href="#tecnologia" class="nav-btn">🎧 Tecnología</a>
+        <a href="#coche" class="nav-btn">🚗 Coche</a>
+    </nav>
 
-    <div class="disclaimer">
-        <strong>Aviso de afiliación:</strong> En WoWcompra.es participamos en programas de afiliados. Cuando compras a través de nuestros enlaces, podemos recibir una comisión sin que a ti te cueste un solo céntimo más.
-    </div>
+    <main>
 
-    <main class="grid-container">
-        
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="auriculares.jpg" alt="Auriculares HAOYUAN Bluetooth 5.4">
+        <!-- SECCIÓN 1: HOGAR -->
+        <h2 id="hogar" class="section-title">🏡 Hogar y Estilo de Vida</h2>
+        <div class="product-grid">
+            
+            <!-- FREIDORA -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="Freidora.jpg" alt="Freidora de Aire Cecotec">
+                    </div>
+                    <span class="badge">Oferta Flash</span>
+                    <h3 class="product-title">Freidora de Aire Cecotec Cecofry Fantastik 4L</h3>
+                    <p class="product-description">Ventana de visualización, 1400W de potencia, panel táctil y 9 modos automáticos.</p>
                 </div>
-                <span class="badge">Top Ventas</span>
-                <h3 class="product-title">Auriculares Inalámbricos HAOYUAN Bluetooth 5.4</h3>
-                <p class="product-description">75h de batería, pantalla LED de carga, cancelación de ruido e impermeables IPX7.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">109,99 €</span>
-                    <span class="new-price">23,73 €</span>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">38,70 €</span>
+                        <span class="new-price">35,91 €</span>
+                    </div>
+                    <a href="https://amzn.to/ejemplo1?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
                 </div>
-                <a href="https://amzn.eu/d/00Wzpmsr?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
-                    <!-- PRODUCTO 2 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="Freidora.jpg" alt="Freidora de Aire Cecotec">
-                </div>
-                <span class="badge">Oferta Flash</span>
-                <h3 class="product-title">Freidora de Aire Cecotec Cecofry Fantastik 4L</h3>
-                <p class="product-description">Ventana de visualización, 1400W de potencia, panel táctil y 9 modos automáticos.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">38,70 €</span>
-                    <span class="new-price">35,91 €</span>
-                </div>
-                <a href="https://amzn.eu/d/03FTH9WX?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>    
-         <!-- PRODUCTO 3 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="reloj.jpg" alt="Smartwatch Xiaomi Redmi Watch 5 Active">
-                </div>
-                <span class="badge">Más Vendido</span>
-                <h3 class="product-title">Smartwatch Xiaomi Redmi Watch 5 Active</h3>
-                <p class="product-description">Llamadas Bluetooth con cancelación de ruido, pantalla de 2", hasta 18 días de batería y +140 modos deportivos.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">39,99 €</span>
-                    <span class="new-price">32,99 €</span>
-                </div>
-                <a href="https://amzn.eu/d/06JaMxO5?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
-         <!-- PRODUCTO 4 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="proyector.jpg" alt="Mini Proyector Portátil Magcubic HY300">
-                </div>
-                <span class="badge">Más Vendido</span>
-                <h3 class="product-title">Mini Proyector Portátil Magcubic HY300 4K</h3>
-                <p class="product-description">Android integrado, resolución 1080P/4K, rotación de 180°, WiFi 6 y altavoz HD.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">55,99 €</span>
-                    <span class="new-price">48,00 €</span>
-                </div>
-                <a href="https://amzn.eu/d/07rRkNQM?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
-         <!-- PRODUCTO 5 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="aspirador.jpg" alt="Aspirador Inalámbrico Portátil">
-                </div>
-                <span class="badge">Chollo</span>
-                <h3 class="product-title">Aspirador Inalámbrico Portátil Potente</h3>
-                <p class="product-description">Diseño compacto y ligero, potente succión, filtro lavable y accesorios para coche y hogar.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">29,99 €</span>
-                    <span class="new-price">19,99 €</span>
-                </div>
-                <a href="Https://amzn.eu/d/02A4Aegn?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
-          <!-- PRODUCTO 6 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="led.jpg" alt="Tira LED RGB Inteligente">
-                </div>
-                <span class="badge">Top Ventas</span>
-                <h3 class="product-title">Tira LED RGB Inteligente con Mando y App</h3>
-                <p class="product-description">Sincronización con música, control por app y mando, multitud de colores e instalación rápida.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">18,99 €</span>
-                    <span class="new-price">11,99 €</span>
-                </div>
-                <a href="Https://amzn.eu/d/04YUmrtc?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
-        <!-- PRODUCTO 7 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="humidificador.jpg" alt="Humidificador Difusor de Aromas LED">
-                </div>
-                <span class="badge">Más Vendido</span>
-                <h3 class="product-title">Humidificador Difusor de Aromas con Luz LED</h3>
-                <p class="product-description">Diseño ultrasónico silencioso, 7 luces LED cambiantes, apagado automático y función de aromaterapia.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">25,99 €</span>
-                    <span class="new-price">15,99 €</span>
-                </div>
-                <a href="Https://amzn.eu/d/00qCbYQ2?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
+            </article>
 
-        <!-- PRODUCTO 8 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="bascula.jpg" alt="Báscula Grasa Corporal Inteligente">
+            <!-- ASPIRADOR -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="aspirador.jpg" alt="Aspirador Inalámbrico">
+                    </div>
+                    <span class="badge">Chollo</span>
+                    <h3 class="product-title">Aspirador Inalámbrico Portátil Potente</h3>
+                    <p class="product-description">Diseño compacto y ligero, potente succión, filtro lavable y accesorios para coche y hogar.</p>
                 </div>
-                <span class="badge">Top Ventas</span>
-                <h3 class="product-title">Báscula Grasa Corporal Inteligente Bluetooth</h3>
-                <p class="product-description">Análisis de 13 métricas corporales (IMC, masa muscular, agua), sincronización con App y pantalla LED.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">29,99 €</span>
-                    <span class="new-price">17,99 €</span>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">29,99 €</span>
+                        <span class="new-price">19,99 €</span>
+                    </div>
+                    <a href="https://amzn.to/ejemplo3?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
                 </div>
-                <a href="Https://amzn.eu/d/01531CN8?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
+            </article>
 
-        <!-- PRODUCTO 9 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="cargador.jpg" alt="Soporte Cargador Inalámbrico Coche">
+            <!-- HUMIDIFICADOR -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="humidificador.jpg" alt="Humidificador Difusor de Aromas LED">
+                    </div>
+                    <span class="badge">Más Vendido</span>
+                    <h3 class="product-title">Humidificador Difusor de Aromas con Luz LED</h3>
+                    <p class="product-description">Diseño ultrasónico silencioso, 7 luces LED cambiantes, apagado automático y función de aromaterapia.</p>
                 </div>
-                <span class="badge">Tendencia</span>
-                <h3 class="product-title">Soporte Cargador Inalámbrico Coche 15W</h3>
-                <p class="product-description">Sujeción automática, carga rápida Qi, rotación 360° y compatible con todos los móviles.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">24,99 €</span>
-                    <span class="new-price">14,99 €</span>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">25,99 €</span>
+                        <span class="new-price">15,99 €</span>
+                    </div>
+                    <a href="Https://amzn.eu/d/00qCbYQ2?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
                 </div>
-                <a href="Https://amzn.eu/d/0iyHLvCu?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
+            </article>
 
-        <!-- PRODUCTO 10 -->
-        <article class="product-card">
-            <div>
-                <div class="product-image">
-                    <img src="altavoz.jpg" alt="Altavoz Bluetooth Portátil Impermeable">
+            <!-- BÁSCULA -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="bascula.jpg" alt="Báscula Grasa Corporal Inteligente">
+                    </div>
+                    <span class="badge">Top Ventas</span>
+                    <h3 class="product-title">Báscula Grasa Corporal Inteligente Bluetooth</h3>
+                    <p class="product-description">Análisis de 13 métricas corporales (IMC, masa muscular, agua), sincronización con App y pantalla LED.</p>
                 </div>
-                <span class="badge">Top Ventas</span>
-                <h3 class="product-title">Altavoz Bluetooth Portátil Impermeable IPX7</h3>
-                <p class="product-description">Sonido HD potente, graves reinforced, hasta 12 horas de batería y resistente al agua.</p>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="old-price">29,99 €</span>
-                    <span class="new-price">16,99 €</span>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">29,99 €</span>
+                        <span class="new-price">17,99 €</span>
+                    </div>
+                    <a href="Https://amzn.eu/d/01531CN8?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
                 </div>
-                <a href="Https://amzn.eu/d/03DsOa3r?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
-                    Ver Oferta en Amazon
-                </a>
-            </div>
-        </article>
+            </article>
+
+        </div>
+
+        <!-- SECCIÓN 2: TECNOLOGÍA -->
+        <h2 id="tecnologia" class="section-title">🎧 Tecnología y Gadgets</h2>
+        <div class="product-grid">
+
+            <!-- AURICULARES -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="auriculares.jpg" alt="Auriculares HAOYUAN">
+                    </div>
+                    <span class="badge">Top Ventas</span>
+                    <h3 class="product-title">Auriculares Inalámbricos HAOYUAN Bluetooth 5.4</h3>
+                    <p class="product-description">75h de batería, pantalla LED de carga, cancelación de ruido e impermeables IPX7.</p>
+                </div>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">109,99 €</span>
+                        <span class="new-price">23,73 €</span>
+                    </div>
+                    <a href="https://amzn.to/ejemplo6?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
+                </div>
+            </article>
+
+            <!-- TIRA LED -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="led.jpg" alt="Tira LED RGB Inteligente">
+                    </div>
+                    <span class="badge">Top Ventas</span>
+                    <h3 class="product-title">Tira LED RGB Inteligente con Mando y App</h3>
+                    <p class="product-description">Sincronización con música, control por app y mando, multitud de colores e instalación rápida.</p>
+                </div>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">18,99 €</span>
+                        <span class="new-price">11,99 €</span>
+                    </div>
+                    <a href="https://amzn.to/ejemplo5?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
+                </div>
+            </article>
+
+            <!-- PROYECTOR -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="proyector.jpg" alt="Mini Proyector Portátil">
+                    </div>
+                    <span class="badge">Novedad</span>
+                    <h3 class="product-title">Mini Proyector Portátil Full HD</h3>
+                    <p class="product-description">Cine en casa donde quieras. Conexión WiFi, Bluetooth, altavoces integrados y soporte para 1080P.</p>
+                </div>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">79,99 €</span>
+                        <span class="new-price">45,99 €</span>
+                    </div>
+                    <a href="https://amzn.to/ejemplo4?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
+                </div>
+            </article>
+
+            <!-- ALTAVOZ -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="altavoz.jpg" alt="Altavoz Bluetooth Portátil Impermeable">
+                    </div>
+                    <span class="badge">Top Ventas</span>
+                    <h3 class="product-title">Altavoz Bluetooth Portátil Impermeable IPX7</h3>
+                    <p class="product-description">Sonido HD potente, graves reforzados, hasta 12 horas de batería y resistente al agua.</p>
+                </div>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">29,99 €</span>
+                        <span class="new-price">16,99 €</span>
+                    </div>
+                    <a href="Https://amzn.eu/d/03DsOa3r?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- SECCIÓN 3: COCHE -->
+        <h2 id="coche" class="section-title">🚗 Coche y Accesorios</h2>
+        <div class="product-grid">
+
+            <!-- CARGADOR DE COCHE -->
+            <article class="product-card">
+                <div>
+                    <div class="product-image">
+                        <img src="cargador.jpg" alt="Soporte Cargador Inalámbrico Coche">
+                    </div>
+                    <span class="badge">Tendencia</span>
+                    <h3 class="product-title">Soporte Cargador Inalámbrico Coche 15W</h3>
+                    <p class="product-description">Sujeción automática, carga rápida Qi, rotación 360° y compatible con todos los móviles.</p>
+                </div>
+                <div>
+                    <div class="price-container">
+                        <span class="old-price">24,99 €</span>
+                        <span class="new-price">14,99 €</span>
+                    </div>
+                    <a href="Https://amzn.eu/d/0iyHLvCu?tag=sheebn-21" target="_blank" rel="nofollow noopener" class="btn-buy">
+                        Ver Oferta en Amazon
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
     </main>
+
+    <footer>
+        <p>En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</p>
+    </footer>
 
 </body>
 </html>
